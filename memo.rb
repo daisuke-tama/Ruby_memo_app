@@ -8,9 +8,10 @@ if memo_type === "1"
   p "拡張子を除いたファイル名を入力してください(CSVファイルのみ対応）"
   file_name = gets.chomp
   p "メモの内容を入力してください"
-  
+  p "メモは複数行記入出来ます"
+  p "記入を完了する時は　control　+　d　を押してください"
   CSV.open("#{file_name}.csv",'w') do |text|
-    text_content = gets.chomp
+    text_content = $stdin.read
     text << ["#{text_content}"]
   end
   
@@ -25,8 +26,10 @@ elsif memo_type === "2"
     end
     
     p "編集してください（元々のメモは破棄されます）"
+    p "メモは複数行記入出来ます"
+    p "記入を完了する時は　control　+　d　を押してください"
     CSV.open("#{edit_file_name}.csv",'w') do |text|
-      text_content = gets.chomp
+      text_content = $stdin.read
       text << ["#{text_content}"]
     end
     
